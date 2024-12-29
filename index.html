@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Dark</title>
+  <link rel="icon" type="image/png" href="https://i.ibb.co/WVQbjBM/B9-CFE55-B-972-A-4-C4-C-899-D-F4-A84537428-E.jpg" />
+  <style>
+    body {
+      background-image: url('https://i.ibb.co/WVQbjBM/B9-CFE55-B-972-A-4-C4-C-899-D-F4-A84537428-E.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    header {
+      background-color: -#0056b3;
+      color: #121212;
+      padding: 10px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header img {
+      height: 50px;
+      margin-right: -10px;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: #f1f1f1;
+      min-width: 150px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: #000;
+      padding: 10px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .logout-button, .cart-button {
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .logout-button:hover, .cart-button:hover {
+      background-color: #0056b3;
+    }
+
+    .spinner {
+      display: none;
+      margin: 20px auto;
+      width: 40px;
+      height: 40px;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #007bff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    main {
+      margin: 20px;
+    }
+
+    .item-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .item {
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .item video {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .item h4 {
+      margin: 10px 0;
+    }
+
+    .item p {
+      color: #28a745;
+      font-weight: bold;
+    }
+
+    .item a {
+      text-decoration: none;
+      color: white;
+      background-color: #007bff;
+      padding: 10px 15px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .item a:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://i.ibb.co/WVQbjBM/B9-CFE55-B-972-A-4-C4-C-899-D-F4-A84537428-E.jpg" alt="Header Logo">
+    <h1>The Dark 5.19</h1>
+      </div>
+    </div>
+    <button class="logout-button" onclick="logout()">Logout</button>
+  </header>
+
+  <main>
+    <div class="spinner"></div>
+    <h1>Items</h1>
+    <div class="item-container">
+      <!-- Dynamically generated items -->
+    </div>
+  </main>
+
+  <footer>
+    <p>   </p>
+  </footer>
+
+  <script>
+    const items = [
+      { name: 'Xinfinity Page', price: '$50', src: 'video/Xinfinity.mp4' },
+      { name: 'Gmail Page', price: '$50', src: 'video/mail.mp4' },
+      { name: 'Havard FCU Fake Online Banking', price: '$50', src: 'video/Havard.mp4' },
+      { name: 'GSUITE GMAIL SMTP, 2000 Daily Sending limit, 200 of 200 Available', price: '$50', src: 'video/smtp.mp4' },
+      { name: 'icloud smtp, 1000 daily sending limit, 120 of 120 Available', price: '$30', src: 'video/icloud.mp4' },
+	  { name: 'AOL login Page', price: '$60', src: 'video/fast.mov' },
+	  { name: 'Office365 page', price: '$70', src: 'video/office.mov' },
+	  { name: 'Synovus page', price: '$20', src: 'video/Synovus.mp4' },
+	  
+      // Add more items following the same structure
+    ];
+
+    const itemContainer = document.querySelector('.item-container');
+    items.forEach(item => {
+      const itemDiv = document.createElement('div');
+      itemDiv.classList.add('item');
+      itemDiv.innerHTML = `
+        <video controls>
+          <source src="${item.src}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <h4>${item.name}</h4>
+        <p>${item.price}</p>
+        <a href="https://t.me/add_big_tyger">Buy Now</a>
+      `;
+      itemContainer.appendChild(itemDiv);
+    });
+
+    function logout() {
+      const spinner = document.querySelector('.spinner');
+      spinner.style.display = 'block';
+      setTimeout(() => {
+        alert('You have been logged out.');
+        window.location.href = 'login.html';
+      }, 10000);
+    }
+  </script>
+</body>
+</html>
